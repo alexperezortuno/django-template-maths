@@ -1,0 +1,65 @@
+Metadata-Version: 1.1
+Name: django-template-maths
+Version: 0.0.5
+Summary: Filter for maths in template
+Home-page: https://github.com/alexperezortuno/django-template-maths
+Author: Alex Perez Ortuño
+Author-email: alexperezortuno@gmail.com
+License: MIT License
+Description: =====
+        Django Template Maths
+        =====
+        
+        Django Template Maths is a simple filter for execute maths in template
+        
+        Quick start
+        -----------
+        
+        1. Add "django_template_maths" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'django_template_maths',
+            ]
+        
+        Example usage
+        -------------
+        
+        ```html
+        {% load django_template_maths %}
+        
+        {{ 10|add:5 }} # print 15
+        
+        {{ 10|sub:5 }} # print 5
+        
+        {{ 10|div:5 }} # print 2
+        
+        {{ 10|mul:5 }} # print 50
+        
+        {{ 10|mod:5 }} # print 0
+        
+        {{ 10|exp:5 }} # print 100000
+        
+        {{ 10|flr:5 }} # print 2
+        
+        {{ 10|sqr }}   # 3.1622776601683795
+        
+        {{ 10|add:5|add_decimal:2 }} # print 15.00
+        
+        {{ 1000|add:5|add_decimal:2|separator:'comma' }} # print 1,005.00
+        
+        {{ 1000|add:5|add_decimal:2|separator:'dot' }} # print 1.005,00
+        
+        ```
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
