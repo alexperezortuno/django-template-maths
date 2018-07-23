@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: django-template-maths
-Version: 0.0.7
+Version: 0.0.10
 Summary: Filter for maths in template
 Home-page: https://github.com/alexperezortuno/django-template-maths
 Author: Alex Perez Ortuño
