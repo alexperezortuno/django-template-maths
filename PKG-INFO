@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: django-template-maths
-Version: 0.0.10
+Version: 0.2.0
 Summary: Filter for maths in template
 Home-page: https://github.com/alexperezortuno/django-template-maths
 Author: Alex Perez Ortuño
@@ -49,6 +49,10 @@ Description: =====
         {{ 1000|add:5|add_decimal:2|separator:'comma' }} # print 1,005.00
         
         {{ 1000|add:5|add_decimal:2|separator:'dot' }} # print 1.005,00
+        
+        {{ 1000|remove_decimal|separator:'dot' }} # print 1.005
+        
+        {{ 50|percent_of_number:500 }} # print 10,0
         
         ```
 Platform: UNKNOWN

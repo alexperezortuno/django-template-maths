@@ -42,4 +42,8 @@ Example usage
 
 {{ 1000|add:5|add_decimal:2|separator:'dot' }} # print 1.005,00
 
+{{ 1000|remove_decimal|separator:'dot' }} # print 1.005
+
+{{ 50|percent_of_number:500 }} # print 10,0
+
 ```
