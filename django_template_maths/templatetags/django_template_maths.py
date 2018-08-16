@@ -195,6 +195,23 @@ def add_decimal(number=None, arg=None):
         return 'NaN'
 
 
+@register.filter(name='remove_decimal', is_safe=True)
+def remove_decimal(number=None):
+    """
+    Add decimals to number
+    :param number:
+    :return number|string:
+    """
+
+    try:
+        if isinstance(number, (Decimal, float, int, str)):
+            return str(number).split('.')[0]
+
+    except Exception as e:
+        logger.error('Error operation: {error}.'.format(error=e))
+        return 'NaN'
+
+
 @register.filter(name='separator', is_safe=True)
 def separator(number=None, arg=None):
     """
@@ -204,15 +221,37 @@ def separator(number=None, arg=None):
     :return number|string:
     """
     try:
-        number = "{:,}".format(number)
+        if isinstance(number, (Decimal, float)):
+            number = "{:,}".format(number)
 
         if arg == 'comma':
-            return number
+            if ',' in number:
+                return number
+            else:
+                return "{:,}".format(int(number))
         elif arg == 'dot':
-            number, decimal = number.split('.')
-            return '{0},{1}'.format(number.replace(',', '.'), decimal)
+            if ',' in number:
+                number, decimal = number.split('.')
+                return '{0},{1}'.format(number.replace(',', '.'), decimal)
+            else:
+                return "{:,}".format(int(number)).replace(',', '.')
         else:
             return 'NaN'
     except Exception as e:
         logger.error('Error operation: {error}.'.format(error=e))
         return 'NaN'
+
+
+@register.filter(name='percent_of_number', is_safe=True)
+def percent_of_number(number_one=None, number_two=None):
+    """
+    Calculate the percent of a given number
+    :param number:
+    :param arg:
+    :return number|string:
+    """
+    try:
+        return float(number_one) / float(number_two) * 100
+    except Exception as e:
+        logger.error('Error operation: {error}.'.format(error=e))
+    return 'NaN'
